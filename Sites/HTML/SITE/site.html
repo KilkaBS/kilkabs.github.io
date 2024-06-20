@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlanzyMC</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            font-size: 2.5rem; /* Размер заголовка */
+        }
+        h2 {
+            font-size: 1.5rem; /* Размер подзаголовка (в 1.5 раза меньше) */
+            margin-top: -10px; /* Регулировка расстояния между заголовками */
+        }
+        .buttons-container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+        .buttons-container.active {
+            display: flex;
+        }
+        .button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid;
+        }
+        .button-row {
+            display: flex;
+        }
+        .button-row .button {
+            margin: 10px;
+        }
+        .back-button {
+            margin-top: 20px; /* Добавлен отступ сверху */
+        }
+    </style>
+</head>
+<body>
+    <h1>Скачать файл</h1>
+    <h2 id="platform-title">Выбери платформу</h2>
+
+    <div id="main-buttons" class="buttons-container active">
+        <button class="button" onclick="showButtons('version1')">BEDROCK</button>
+        <button class="button" onclick="showButtons('version2')">JAVA</button>
+    </div>
+
+    <div id="version1" class="buttons-container">
+        <div class="button-row">
+            <button class="button" onclick="window.location.href='https://link1.com'">Ссылка 1</button>
+            <button class="button" onclick="window.location.href='https://link2.com'">Ссылка 2</button>
+        </div>
+        <div class="button-row">
+            <button class="button" onclick="window.location.href='https://link3.com'">Ссылка 3</button>
+            <button class="button" onclick="window.location.href='https://link4.com'">Ссылка 4</button>
+        </div>
+        <div class="button-row">
+            <button class="button" onclick="window.location.href='https://link5.com'">Ссылка 5</button>
+            <button class="button" onclick="window.location.href='https://link6.com'">Ссылка 6</button>
+        </div>
+        <button class="button back-button" onclick="showButtons('main-buttons')">Назад</button>
+    </div>
+
+    <div id="version2" class="buttons-container">
+        <div class="button-row">
+            <button class="button" onclick="window.location.href='https://link7.com'">Ссылка 1</button>
+            <button class="button" onclick="window.location.href='https://link8.com'">Ссылка 2</button>
+        </div>
+        <div class="button-row">
+            <button class="button" onclick="window.location.href='https://link9.com'">Ссылка 3</button>
+            <button class="button" onclick="window.location.href='https://link10.com'">Ссылка 4</button>
+        </div>
+        <div class="button-row">
+            <button class="button" onclick="window.location.href='https://link11.com'">Ссылка 5</button>
+            <button class="button" onclick="window.location.href='https://link12.com'">Ссылка 6</button>
+        </div>
+        <button class="button back-button" onclick="showButtons('main-buttons')">Назад</button>
+    </div>
+
+    <script>
+        function showButtons(containerId) {
+            document.querySelectorAll('.buttons-container').forEach(container => {
+                container.classList.remove('active');
+            });
+            document.getElementById(containerId).classList.add('active');
+
+            if (containerId === 'main-buttons') {
+                document.getElementById('platform-title').textContent = 'Выбери платформу';
+            } else {
+                document.getElementById('platform-title').textContent = 'Выбери версию';
+            }
+        }
+    </script>
+</body>
+</html>
+
